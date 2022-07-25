@@ -1,0 +1,3 @@
+[submodule "spor"]
+	path = spor
+	url = https://github.com/nsbno/spor.git

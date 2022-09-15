@@ -3,14 +3,15 @@
     "name": "nsbno/spor-elm",
     "summary": "UI components used in Elm applications at Vy",
     "license": "MIT",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "exposed-modules": [
         "Spor.Text",
         "Spor.TextStyle",
         "Spor.Heading",
-        "Spor.TravelTag",
-        "Spor.InfoTag",
-        "Spor.LineTagIcon"
+        "Spor.LineTag.TravelTag",
+        "Spor.LineTag.InfoTag",
+        "Spor.LineTag.LineIcon",
+        "Spor.LineTag.Types"
     ],
     "elm-version": "0.19.1 <= v < 0.20.0",
     "dependencies": {

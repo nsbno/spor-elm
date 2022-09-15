@@ -1,6 +1,12 @@
-module Spor.TravelTag exposing (..)
+module Spor.LineTag.TravelTag exposing
+    ( TravelTag
+    , init, withVariant, withSize, withTitle, withDescription, withColor, withBackgroundColor
+    , toHtml
+    )
 
 {-| A component for displaying travel tags
+
+@docs TravelTag
 
 
 ## Config
@@ -17,9 +23,9 @@ module Spor.TravelTag exposing (..)
 import Css exposing (Color)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.Common.Types exposing (Size(..), Variant(..))
-import Spor.LineTagIcon as LineTagIcon
-import Spor.LineTagText as LineTagText
+import Spor.LineTag.LineIcon as LineTagIcon
+import Spor.LineTag.LineText as LineTagText
+import Spor.LineTag.Types exposing (Size(..), Variant(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
 import Spor.Token.Size.Spacing as Spacing

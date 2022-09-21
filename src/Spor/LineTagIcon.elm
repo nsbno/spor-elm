@@ -1,12 +1,6 @@
-module Spor.LineTag.LineIcon exposing
-    ( LineIcon
-    , init, withVariant, withSize, withAdditionalStyle, withColor, withDescription
-    , toHtml
-    )
+module Spor.LineTagIcon exposing (..)
 
-{-| A component for displaying line icons
-
-@docs LineIcon
+{-| A component for displaying line tag icons
 
 
 ## Config
@@ -24,17 +18,17 @@ import Css exposing (Color, Style)
 import Css.Global
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
+import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.Icon.Transportation as Transportation
-import Spor.LineTag.Types exposing (Size(..), Variant(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Color.Linjetag as Linjetag
 import Svg.Styled as Svg exposing (Svg)
 
 
-{-| A component for displaying line icons
+{-| A component for displaying line tag icons
 -}
-type LineIcon
-    = LineIcon Options
+type LineTagIcon
+    = LineTagIcon Options
 
 
 type alias Options =
@@ -50,11 +44,11 @@ type alias Options =
 -- CONFIG
 
 
-{-| Create an initial configuration for a `LineIcon` component.
+{-| Create an initial configuration for a `LineTagIcon` component.
 -}
-init : LineIcon
+init : LineTagIcon
 init =
-    LineIcon
+    LineTagIcon
         { variant = LocalTrain
         , size = Sm
         , description = Nothing
@@ -65,37 +59,37 @@ init =
 
 {-| Set the variant
 -}
-withVariant : Variant -> LineIcon -> LineIcon
-withVariant variant (LineIcon options) =
-    LineIcon { options | variant = variant }
+withVariant : Variant -> LineTagIcon -> LineTagIcon
+withVariant variant (LineTagIcon options) =
+    LineTagIcon { options | variant = variant }
 
 
 {-| Set the size
 -}
-withSize : Size -> LineIcon -> LineIcon
-withSize size (LineIcon options) =
-    LineIcon { options | size = size }
+withSize : Size -> LineTagIcon -> LineTagIcon
+withSize size (LineTagIcon options) =
+    LineTagIcon { options | size = size }
 
 
 {-| Set the description to be displayed
 -}
-withDescription : Maybe String -> LineIcon -> LineIcon
-withDescription description (LineIcon options) =
-    LineIcon { options | description = description }
+withDescription : Maybe String -> LineTagIcon -> LineTagIcon
+withDescription description (LineTagIcon options) =
+    LineTagIcon { options | description = description }
 
 
 {-| Set the additonal style
 -}
-withAdditionalStyle : Style -> LineIcon -> LineIcon
-withAdditionalStyle style (LineIcon options) =
-    LineIcon { options | additionalStyle = style }
+withAdditionalStyle : Style -> LineTagIcon -> LineTagIcon
+withAdditionalStyle style (LineTagIcon options) =
+    LineTagIcon { options | additionalStyle = style }
 
 
 {-| Set the colour
 -}
-withColor : Maybe Color -> LineIcon -> LineIcon
-withColor color (LineIcon options) =
-    LineIcon { options | color = color }
+withColor : Maybe Color -> LineTagIcon -> LineTagIcon
+withColor color (LineTagIcon options) =
+    LineTagIcon { options | color = color }
 
 
 
@@ -104,8 +98,8 @@ withColor color (LineIcon options) =
 
 {-| Convert configuration to HTML
 -}
-toHtml : LineIcon -> Html a
-toHtml (LineIcon options) =
+toHtml : LineTagIcon -> Html a
+toHtml (LineTagIcon options) =
     let
         borderColor_ =
             borderColor options.variant
@@ -164,7 +158,7 @@ borderColor : Variant -> Maybe Color
 borderColor variant =
     case variant of
         Walk True ->
-            Just <| Alias.toCss Alias.osloGrey
+            Just <| toCss osloGrey
 
         _ ->
             Nothing
@@ -174,13 +168,13 @@ iconColor : Variant -> Color
 iconColor variant =
     case variant of
         Walk _ ->
-            Alias.toCss Alias.darkGrey
+            toCss darkGrey
 
         AlternativeTransport ->
-            Alias.toCss Alias.darkGrey
+            toCss darkGrey
 
         _ ->
-            Alias.toCss Alias.white
+            toCss white
 
 
 icon : Variant -> Size -> Svg msg
@@ -332,4 +326,4 @@ backgroundColor variant =
             Linjetag.toCss Linjetag.altTransport
 
         Walk _ ->
-            Alias.toCss Alias.white
+            toCss white

@@ -1,12 +1,6 @@
-module Spor.LineTag.InfoTag exposing
-    ( InfoTag
-    , init, withVariant, withSize, withTitle, withDescription, withColor
-    , toHtml
-    )
+module Spor.InfoTag exposing (..)
 
 {-| A component for displaying info tags
-
-@docs InfoTag
 
 
 ## Config
@@ -23,9 +17,9 @@ module Spor.LineTag.InfoTag exposing
 import Css exposing (Color)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.LineTag.LineIcon as LineTagIcon
-import Spor.LineTag.LineText as LineTagText
-import Spor.LineTag.Types exposing (Size(..), Variant(..))
+import Spor.Common.Types exposing (Size(..), Variant(..))
+import Spor.LineTagIcon as LineTagIcon
+import Spor.LineTagText as LineTagText
 import Spor.Token.Size.Spacing as Spacing
 
 

@@ -1,17 +1,11 @@
-module Spor.LineTag.LineText exposing
-    ( LineText
-    , init, withTitle, withDescription
-    , toHtml
-    )
+module Spor.LineTagText exposing (..)
 
-{-| A component for displaying line text
-
-@docs LineText
+{-| A component for displaying line tag text
 
 
 ## Config
 
-@docs init, withTitle, withDescription
+@docs init, withTitle, withText
 
 
 ## Display
@@ -23,17 +17,17 @@ module Spor.LineTag.LineText exposing
 import Css
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes
-import Spor.LineTag.Types exposing (Size(..), Variant(..))
+import Spor.Common.Types exposing (Size(..), Variant(..))
 import Spor.Text as Text
 import Spor.TextStyle as TextStyle exposing (TextStyle(..))
 import Spor.Token.Color.Alias as Alias
 import Spor.Token.Size.Spacing as Spacing
 
 
-{-| A component for displaying line text
+{-| A component for displaying line tag text
 -}
-type LineText
-    = LineText Options
+type LineTagText
+    = LineTagText Options
 
 
 type alias Options =
@@ -42,11 +36,11 @@ type alias Options =
     }
 
 
-{-| Create an initial configuration for a `LineText` component.
+{-| Create an initial configuration for a `LineTagText` component.
 -}
-init : LineText
+init : LineTagText
 init =
-    LineText
+    LineTagText
         { title = ""
         , description = Nothing
         }
@@ -54,16 +48,16 @@ init =
 
 {-| Set the title to be displayed
 -}
-withTitle : String -> LineText -> LineText
-withTitle title (LineText options) =
-    LineText { options | title = title }
+withTitle : String -> LineTagText -> LineTagText
+withTitle title (LineTagText options) =
+    LineTagText { options | title = title }
 
 
 {-| Set the text to be displayed
 -}
-withDescription : Maybe String -> LineText -> LineText
-withDescription description (LineText options) =
-    LineText { options | description = description }
+withDescription : Maybe String -> LineTagText -> LineTagText
+withDescription description (LineTagText options) =
+    LineTagText { options | description = description }
 
 
 
@@ -72,8 +66,8 @@ withDescription description (LineText options) =
 
 {-| Convert configuration to HTML
 -}
-toHtml : LineText -> Html a
-toHtml (LineText options) =
+toHtml : LineTagText -> Html a
+toHtml (LineTagText options) =
     Html.div
         [ Attributes.css
             [ Css.displayFlex
@@ -85,7 +79,7 @@ toHtml (LineText options) =
     <|
         Html.span
             [ Attributes.css
-                [ Css.color <| Alias.toCss Alias.darkGrey
+                [ Css.color <| toCss darkGrey
                 , Css.fontWeight Css.bold
                 ]
             ]
@@ -105,7 +99,7 @@ textContent options =
             (\item ->
                 [ Html.span
                     [ Attributes.css
-                        [ Css.color <| Alias.toCss Alias.darkGrey
+                        [ Css.color <| toCss darkGrey
                         , Css.marginLeft <| Css.px 3
                         ]
                     ]

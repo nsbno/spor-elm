@@ -3,7 +3,7 @@
     "name": "nsbno/spor-elm",
     "summary": "UI components used in Elm applications at Vy",
     "license": "MIT",
-    "version": "2.2.0",
+    "version": "3.0.0",
     "exposed-modules": [
         "Spor.Text",
         "Spor.TextStyle",
